@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Characters from './Characters'
-
+import React from 'react';
+import Navigation from './Navigation'
+import '../App.css';
 
 
 function App() {
-
-  
   return (
     <div className="App">
-      <Characters />
+      <Navigation />
     </div>
   );
 }
