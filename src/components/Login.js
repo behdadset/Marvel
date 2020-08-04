@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import fire from './fire';
+import {withRouter} from 'react-router-dom'
 
 class Login extends Component {
   constructor(props){
@@ -17,6 +18,7 @@ class Login extends Component {
     e.preventDefault();
     fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then((u)=>{
       this.setState({message: u.message})
+      this.props.history.push("/")
     })
     .catch((err)=>{
       this.setState({message: err.message})
@@ -51,11 +53,11 @@ class Login extends Component {
             <p className="forgot-password text-right">
               Not user yet <a href="/signup">Sign Up?</a>
             </p>
-          <h3 className="error">{this.state.message}</h3>
+          <h6 className="error">{this.state.message}</h6>
         </form>
       </div>
     )
   }
 }
 
-export default Login;
+export default withRouter(Login) ;

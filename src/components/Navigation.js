@@ -9,23 +9,26 @@ import Home from './Home';
 import AboutUs from './AboutUs';
 import Login from './Login';
 import Signup from './Signup';
+import Hero from './Hero'
 import fire from './fire'
 import 'bootstrap/dist/css/bootstrap.min.css';
-let log = null
 
 export default class Navigation extends React.Component {
-    
-    logout = () => { //Signout 
-        fire.auth().signOut();
-    }
-
-    authListener = () => { //Check for login status
+    constructor(){
+        super()
+        this.state={
+            logedin: false
+        }
         fire.auth().onAuthStateChanged((user) =>{
             if(user){
-                log = user
+                this.setState({logedin: true})
                 console.log(user)
             }
         })
+    }
+    
+    logout = () => { //Signout 
+        fire.auth().signOut();
     }
 
     render() {
@@ -42,7 +45,7 @@ export default class Navigation extends React.Component {
                                         <Nav.Link href="/">Home</Nav.Link>
                                         <Nav.Link href="/about-us">About</Nav.Link>
                                         <Nav.Link href="/login">Login</Nav.Link>
-                                        {log
+                                        {this.state.logedin
                                             ? (<Nav.Link href="/"><button className="btn btn-info" onClick={this.logout()}>Logout</button></Nav.Link>) 
                                             : (null)}
                                         
@@ -62,6 +65,9 @@ export default class Navigation extends React.Component {
                                 </Route>
                                 <Route path="/signup">
                                     <Signup />
+                                </Route>
+                                <Route path="/hero/:id">
+                                    <Hero />
                                 </Route>
                             </Switch>
                         </Router>

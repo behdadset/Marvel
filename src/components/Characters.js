@@ -15,10 +15,11 @@ function Characters() {
 
                 Marvel.characters
                 .events(eventId)
-                .limit(50)
+                .limit(100)
                 .get(function(err, res) {
                     if (err) { throw err }
                     setCharacters(res)
+                    console.log(res)
 
                 })
             })
@@ -26,21 +27,25 @@ function Characters() {
     
     return (
         <div className="Characters">
+            <div className='hover'>hover over me</div>
+            {!characters &&
+            <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            }
             {characters &&
-                characters.map((character, index) => {
-
-                return (
-                    
-                    <div className="character" key={index}>
-                        <div className="gallery">
-                            <a href={character.id}>
-                                <img src={character.thumbnail.path+'.'+character.thumbnail.extension} alt="Forest"  />
-                            </a>
-                            <div className="desc">{character.name}</div>
-                        </div>
-                        
-                    </div>
-                );
+                characters.map((character) => {
+                    return (
+                        <a href={"/hero/"+character.id} key={character.id}>
+                            <div className="character">
+                                <div className="gallery">
+                                    <img className="characterImage" src={character.thumbnail.path+'.'+character.thumbnail.extension} alt="Forest"  />
+                                    <div className="desc">
+                                        <p>{character.name}</p>
+                                        <p > Price: ${character.events.available}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    );
             })}
         </div>
     );
