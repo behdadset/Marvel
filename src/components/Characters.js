@@ -5,7 +5,6 @@ function Characters() {
 
     const [characters, setCharacters] = useState(null)
     useEffect(() => {
-      
         
         Marvel.events
             .name("civil war")
@@ -27,7 +26,7 @@ function Characters() {
     
     return (
         <div className="Characters">
-            <div className='hover'>hover over me</div>
+            {/* <div className='hover'>hover over me</div> */}
             {!characters &&
             <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             }

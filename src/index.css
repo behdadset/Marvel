@@ -9,6 +9,14 @@
   display: grid;
 }
 
+.loginBtn{
+  float: right
+}
+
+.logoutBtn{
+  float: right
+}
+
 div.gallery {
   margin: 15px;
   border: 1px solid #ccc;
@@ -39,7 +47,13 @@ div.gallery img {
 .heroImage{
   display: grid;
   max-width: 500px;
-  margin-left: 100px ;
+  box-shadow: 10px 5px 10px grey;
+  margin: 20px;
+}
+
+.buy{
+  display: flex;
+  justify-content: center;
 }
 
 div.desc {
@@ -52,10 +66,13 @@ div.desc {
   margin: 0 auto;
 }
 
+.form-control{
+  margin-bottom: 10px;
+}
+
 .login{
   max-width: 500px;
   margin: auto;
-  
 }
 
 .error{
@@ -66,6 +83,35 @@ div.desc {
   display: flex;
   justify-content: center;
   margin: 0 auto;
+}
+
+.cardImage{
+  max-height: 200px;
+  border-radius: 5% 5% 0 0;
+}
+
+.items{
+  margin-top: 20px;
+  border-style: groove;
+}
+
+.countPrice{
+  margin-top: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.removeBtn{
+  margin-left: 56px;
+
+}
+
+.cardList{
+  display: inline-block;
+}
+
+.buy{
+  margin-top: 50px;
 }
 
 .lds-spinner {
@@ -177,6 +223,8 @@ div.desc {
   animation: 2s counterclockwise infinite;
 }
 
+
+
 @keyframes clockwise {
   0% {
     top: -5px;
@@ -219,7 +267,6 @@ div.desc {
 .mr-auto {
   font-family: 'Titillium Web';
   text-transform: uppercase;
-  text-align: center;
   font-weight: 600;
 }
 
