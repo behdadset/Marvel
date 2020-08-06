@@ -6,7 +6,6 @@ import {
   } from "react-router-dom";
 import { Navbar,Nav} from 'react-bootstrap'
 import Home from './Home';
-import AboutUs from './AboutUs';
 import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
@@ -19,11 +18,13 @@ export default class Navigation extends React.Component {
     constructor(){
         super()
         this.state={
-            userId: ""
+            userId: "",
+            email: ""
         }
         fire.auth().onAuthStateChanged((user) =>{
             if(user.uid !== ""){
                 this.setState({userId: user.uid})
+                this.setState({email: user.email})
             }
         })
     }
@@ -41,7 +42,6 @@ export default class Navigation extends React.Component {
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="mr-auto">
                                         <Nav.Link href="/">Home</Nav.Link>
-                                        <Nav.Link href="/about-us">About</Nav.Link>
                                         <Nav.Link href="/card">Card</Nav.Link>
                                         {this.state.userId === ""
                                         ?<Nav.Link className="loginBnt" href="/login">Login</Nav.Link>
@@ -56,9 +56,6 @@ export default class Navigation extends React.Component {
                                 <Route exact path="/" userId={this.state.userId}>
                                     <Home />
                                 </Route>
-                                <Route path="/about-us">
-                                    <AboutUs />
-                                </Route>
                                 <Route path="/login" >
                                     <Login />
                                 </Route>
@@ -66,7 +63,7 @@ export default class Navigation extends React.Component {
                                     <Signup />
                                 </Route>
                                 <Route path="/profile">
-                                    <Profile user={this.user}/>
+                                    <Profile user={this.state.email}/>
                                 </Route>
                                 <Route path="/hero/:id" >
                                     <Hero userId={this.state.userId}/>

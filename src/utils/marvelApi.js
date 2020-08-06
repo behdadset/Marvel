@@ -1,8 +1,8 @@
 import Marvel from 'marvel'
 
 const api = new Marvel({
-    publicKey: '5a604b363815368e2200af39d6b69f0b',
-    privateKey: '22c3b424363138bc71b35747cb19753ac06d5c8f'
+    publicKey: '062db4f9ef1f1d77a8e7b4f53f64286f',
+    privateKey: 'e7831a5d842e60db03572eeafe07240a62f7bd4b'
 })
 
 export default api

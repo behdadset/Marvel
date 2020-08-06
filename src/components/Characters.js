@@ -28,7 +28,7 @@ function Characters() {
         <div className="Characters">
             {/* <div className='hover'>hover over me</div> */}
             {!characters &&
-            <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             }
             {characters &&
                 characters.map((character) => {

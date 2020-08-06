@@ -18,9 +18,20 @@ class Profile extends Component {
     }
     render() {
         return (
-            <div className="row">
-                <div>
-                    <button onClick={this.logout} className="btn btn-info btn-lg btn-block btn-huge">Log out</button>
+            <div >
+                {!this.props.user &&
+                    <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>     
+                }
+                <div className="profile">
+                    
+
+                    {this.props.user &&
+                        <p>Your Id is "{this.props.user}"</p>
+                    }
+                    <br/><br/><br/>
+                    {this.props.user &&
+                        <button onClick={this.logout} className="btn btn-info ">Log out</button>
+                    }
                 </div>
             </div>
         )

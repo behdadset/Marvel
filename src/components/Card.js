@@ -3,7 +3,7 @@ import fire from './fire'
 import Marvel from '../utils/marvelApi'
 
 export default function Card(props) {
-    const [shopList, setShopList] = useState(null)
+    const [shopList, setShopList] = useState(null)    
     let list = []
     
     if(shopList){
@@ -11,10 +11,13 @@ export default function Card(props) {
     }
 
     useEffect(() => {
-        fire.database().ref(`rs9RPVsIaZYZzHkdatOCFxy5CD83/ShopList`).on("value",res => {
-            setShopList(res.val())
-          })
-    }, [])
+        if(props.userId){
+            fire.database().ref(`${props.userId}/ShopList`).on("value",res => {
+                setShopList(res.val())
+            })
+        }
+
+    }, [props.userId])
 
     class Pic extends React.Component {
         constructor(){
@@ -37,7 +40,7 @@ export default function Card(props) {
         }
         render(){
             return(
-                <img className="cardImage" src={this.state.url}></img>
+                <img alt="cardList" className="cardImage" src={this.state.url}></img>
             )
         }
     }
@@ -46,7 +49,7 @@ export default function Card(props) {
         constructor(){
             super()
             this.state={
-                price: ""
+                price: 0
             }
         }
         componentDidMount(){
@@ -58,48 +61,61 @@ export default function Card(props) {
                 }
                 else { 
                     this.setState({price: resp[0].events.available})
+                    //this.props.addToTotal(resp[0].events.available)
                 }
             })
         }
+        
+        
         render(){
             return(
-                <p>${this.state.price}</p>
+                <div>
+                    <p>${this.state.price}</p>
+                
+                    <p>${(this.state.price)*Object.values(shopList[this.props.id])[0]}</p>
+                    
+                </div>
             )
         }
     }
-    
-    const checkList=()=>{
-        console.log(shopList)
+
+    const remove = () => {
+        fire.database().ref().child(props.userId).child('ShopList').remove()
+
     }
 
     return (
-        <div className="cardList">
-            {!shopList &&
-            <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            }
-            {list &&
-                list.map((item) => {
-                    return (
-                        <div className="gallery">
-                            <Pic  id={item}/>
-                            <div className="countPrice">
+        <div className="row">
+            <div className="col-md-8">
+                
+                {list &&
+                    list.map((item) => {
+                        return (
+                            <div className="gallery">
+                                <Pic  id={item}/>
+                                <div className="countPrice">
+                                    
+                                    <Price id={item}/>
+                                    <p>X {Object.values(shopList[item])}</p>
+                                </div>
                                 
-                                <Price id={item}/>
-                                <p>X {Object.values(shopList[item])}</p>
-                            </div>
-                            <button className="removeBtn btn btn-danger">Remove</button>
-                            
-                        </div>  
-                    );
-            })}
-            
-            <div className="buy">
-                {shopList && <p>You have {list.length} hero(s) in your card.</p>}
+                            </div>  
+                        );
+                })}
                 
-                
-                <button className="btn btn-info" onClick={checkList}>List</button>
             </div>
             
+            <div className="cardList col-md-4">
+            <br/><br/><br/>
+                {shopList && <p>You have {list.length} hero(s) in your card.</p>}
+                {!shopList && <p>Wait a few seconds to load you shop list or you havn not added any hero in your card.</p>}
+                {shopList &&
+                    <button onClick={remove} className="cardBtn btn btn-danger">Remove All</button>
+                }<br/><br/><br/>
+                {shopList &&
+                    <button onClick={remove} className="cardBtn btn btn-info">Buy All</button>
+                }
+            </div>
             
         </div>
     )

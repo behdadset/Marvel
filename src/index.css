@@ -3,6 +3,10 @@
 .App{
   display: grid;
   min-height: 100vh;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-family: 'Titillium Web';
+  font-weight: 600;
 }
 
 .Home{
@@ -15,6 +19,15 @@
 
 .logoutBtn{
   float: right
+}
+
+.profile{
+  margin-left: 30%;
+}
+
+.comicsList{
+  overflow-y: auto;
+  height: 300px;
 }
 
 div.gallery {
@@ -49,11 +62,6 @@ div.gallery img {
   max-width: 500px;
   box-shadow: 10px 5px 10px grey;
   margin: 20px;
-}
-
-.buy{
-  display: flex;
-  justify-content: center;
 }
 
 div.desc {
@@ -96,22 +104,25 @@ div.desc {
 }
 
 .countPrice{
-  margin-top: 40%;
+  margin-top: 20%;
   display: flex;
   justify-content: center;
 }
 
 .removeBtn{
   margin-left: 56px;
-
-}
-
-.cardList{
-  display: inline-block;
 }
 
 .buy{
   margin-top: 50px;
+}
+
+.cardBtn{
+  width: 150px;
+}
+
+.priceTag{
+  margin-left: 10%;
 }
 
 .lds-spinner {
@@ -121,10 +132,12 @@ div.desc {
   width: 80px;
   height: 80px;
 }
+
 .lds-spinner div {
   transform-origin: 40px 40px;
   animation: lds-spinner 1.2s linear infinite;
 }
+
 .lds-spinner div:after {
   content: " ";
   display: block;
@@ -136,94 +149,66 @@ div.desc {
   border-radius: 20%;
   background: black;
 }
+
 .lds-spinner div:nth-child(1) {
   transform: rotate(0deg);
   animation-delay: -1.1s;
 }
+
 .lds-spinner div:nth-child(2) {
   transform: rotate(30deg);
   animation-delay: -1s;
 }
+
 .lds-spinner div:nth-child(3) {
   transform: rotate(60deg);
   animation-delay: -0.9s;
 }
+
 .lds-spinner div:nth-child(4) {
   transform: rotate(90deg);
   animation-delay: -0.8s;
 }
+
 .lds-spinner div:nth-child(5) {
   transform: rotate(120deg);
   animation-delay: -0.7s;
 }
+
 .lds-spinner div:nth-child(6) {
   transform: rotate(150deg);
   animation-delay: -0.6s;
 }
+
 .lds-spinner div:nth-child(7) {
   transform: rotate(180deg);
   animation-delay: -0.5s;
 }
+
 .lds-spinner div:nth-child(8) {
   transform: rotate(210deg);
   animation-delay: -0.4s;
 }
+
 .lds-spinner div:nth-child(9) {
   transform: rotate(240deg);
   animation-delay: -0.3s;
 }
+
 .lds-spinner div:nth-child(10) {
   transform: rotate(270deg);
   animation-delay: -0.2s;
 }
+
 .lds-spinner div:nth-child(11) {
   transform: rotate(300deg);
   animation-delay: -0.1s;
 }
+
 .lds-spinner div:nth-child(12) {
   transform: rotate(330deg);
   animation-delay: 0s;
 }
-
-.hover {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin: 20px auto;
-  width: 250px;
-  height: 250px;
-  background: white;
-  border-radius: 75px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
-  font-weight: lighter;
-  letter-spacing: 2px;
-  transition: 1s box-shadow;
-}
-
-.hover:hover {
-  box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
-}
-
-.hover:hover::before, .hover:hover::after {
-  display: block;
-  content: '';
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  background: #FDA8CF;
-  border-radius: 75px;
-  z-index: -1;
-  animation: 1s clockwise infinite;
-}
-
-.hover:hover:after {
-  background: #F3CE5E;
-  animation: 2s counterclockwise infinite;
-}
-
-
 
 @keyframes clockwise {
   0% {
@@ -364,17 +349,39 @@ div.desc {
 }
 
 @media screen and (max-width: 600px) {
+  .App{
+  margin-left: 0;
+  margin-right: 0
+
+  }
+
+  .removeBtn{
+    margin-left: 30px;
+  
+  }
+
   .marvel-logo{
     max-width: 200px;
   }
 
   div.gallery {
     width: 150px;
-    min-height: 300px;
+    min-height: 330px;
   }
 
   .lds-spinner {
     margin-left: 40%;
+  }
+
+  .heroImage{
+    display: grid;
+    max-width: 100vw;
+    box-shadow: 10px 5px 10px grey;
+    margin: 20px;
+  }
+
+  .cardList{
+    margin-left: 80px;
   }
 }
 
