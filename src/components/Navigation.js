@@ -42,7 +42,9 @@ export default class Navigation extends React.Component {
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="mr-auto">
                                         <Nav.Link href="/">Home</Nav.Link>
-                                        <Nav.Link href="/card">Card</Nav.Link>
+                                        {fire.auth().W &&
+                                            <Nav.Link href="/card">Card</Nav.Link>
+                                        }
                                         {this.state.userId === ""
                                         ?<Nav.Link className="loginBnt" href="/login">Login</Nav.Link>
                                         : <Nav.Link className="loginBnt" href="/profile">Profile</Nav.Link>
