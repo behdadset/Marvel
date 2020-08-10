@@ -7,26 +7,24 @@ class Profile extends Component {
     constructor(props){
         super(props)
         this.logout = this.logout.bind(this);
-
     }
 
     logout = (e) => { //Signout 
         e.preventDefault();
         fire.auth().signOut();
         this.props.history.push("/")
-
     }
+
     render() {
         return (
             <div >
-                {!this.props.user &&
+                <br/><br/><br/>
+                {!this.props.user && //Loading
                     <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>     
                 }
                 <div className="profile">
-                    
-
                     {this.props.user &&
-                        <p>Your Id is "{this.props.user}"</p>
+                        <h3>Your Id is "{this.props.user}"</h3>
                     }
                     <br/><br/><br/>
                     {this.props.user &&

@@ -3,6 +3,7 @@ import { withRouter } from 'react-router'
 import Marvel from '../utils/marvelApi'
 import fire from './fire'
 import {Alert} from 'reactstrap'
+
 function Hero(props) {
     const [hero, setHero] = useState(null)
     const [count, setCount] = useState("1")
@@ -10,6 +11,7 @@ function Hero(props) {
     const [visibileErr, setVisibleErr] = useState(false)
     const [visibileErrMin, setVisibleErrMin] = useState(false)
 
+    //Getting hero information from API
     useEffect(() => {
         Marvel.characters
             .id(props.match.params.id)
@@ -24,19 +26,19 @@ function Hero(props) {
     }, [props.userId])
 
     const addToCard = () =>{
-
-        if (count > hero.events.available){
+        if (count > hero.events.available){ //Validating quantity input and put it in database
             setVisibleErr(true)
-        } else if(count < 1 && count%1===0){
+        }else if(count < 1 ){
+            setVisibleErrMin(true)
+        }else if(count%1!==0){
             setVisibleErrMin(true)
         }else{
             fire.database().ref().child(props.userId).child('ShopList').child(props.match.params.id).set(count)
             setVisible(true)
-            
-        }
-        
+        }   
     }
 
+    //Closing notifications
     const closeNotification = () => {
         setVisible(false)
         setVisibleErr(false)
@@ -45,7 +47,6 @@ function Hero(props) {
 
     return (
         <div className="heros">
-            
             {hero &&
                 <h1 className="title">{hero.name}</h1>
             }<br/><br/>
@@ -55,11 +56,9 @@ function Hero(props) {
                 }
                 <div className="col-md-6">
                     <span className="flaticon-analysis"></span>
-
                     {hero &&       
                         <h5>{hero.description}</h5>
                     }<br/>
-                    
                     <div className="row">
                         <div className="col-md-6">
                         <br/>
@@ -70,25 +69,23 @@ function Hero(props) {
                                 {hero &&
                                     hero.comics.items.map((item) =>{
                                             return(
-                                                <p>{item.name}</p>
+                                                <p key={item.name}>{item.name}</p>
                                             )
                                         }
                                     )
                                 }
                             </div>
                         </div>
-                        
                         <div className="col-md-6">
                         <br/>
                             {hero &&
-                                <h4>Just <b>{hero.events.available}</b> of {hero.name} is left in stock</h4>
+                                <h4>Just <b>{hero.events.available}</b> {hero.name} left in stock</h4>
                             }
                         </div>
                     </div>
                 </div>
             </div>
             <div >
-            
                 {hero &&
                     <h5 className="priceTag">Price: <b>${hero.events.available}</b></h5>
                 }
@@ -112,11 +109,8 @@ function Hero(props) {
                         {fire.auth().W &&
                             <button onClick={addToCard} className="btn btn-info btn-lg btn-block btn-huge">Add to card</button> 
                         }
-                        
                     </div>
-                    
                 </div>
-                
             </div>
         </div>
     )

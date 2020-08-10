@@ -1,6 +1,8 @@
-import * as firebase from 'firebase';
-import "firebase/storage"
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
 
+//Firebase Config file
 const firebaseConfig = {
   apiKey: "AIzaSyCZ5EB5CbVxAycdR5KOX4mFkzqAx5mjbho",
   authDomain: "marvel-shop-6676f.firebaseapp.com",
@@ -12,6 +14,5 @@ const firebaseConfig = {
 };
 
   const fire = firebase.initializeApp(firebaseConfig)
-  const storage = firebase.storage()
   // Initialize Firebase
-  export {storage, fire as default};
+  export {fire as default};

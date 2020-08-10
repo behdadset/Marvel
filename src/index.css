@@ -221,34 +221,42 @@ div.desc {
     top: -5px;
     left: 0;
   }
+
   12% {
     top: -2px;
     left: 2px;
   }
+
   25% {
     top: 0;
     left: 5px;    
   }
+
   37% {
     top: 2px;
     left: 2px;
   }
+
   50% {
     top: 5px;
     left: 0;    
   }
+
   62% {
     top: 2px;
     left: -2px;
   }
+
   75% {
     top: 0;
     left: -5px;
   }
+
   87% {
     top: -2px;
     left: -2px;
   }
+
   100% {
     top: -5px;
     left: 0;    
@@ -312,34 +320,42 @@ div.desc {
     top: -5px;
     right: 0;
   }
+
   12% {
     top: -2px;
     right: 2px;
   }
+
   25% {
     top: 0;
     right: 5px;    
   }
+  
   37% {
     top: 2px;
     right: 2px;
   }
+
   50% {
     top: 5px;
     right: 0;    
   }
+
   62% {
     top: 2px;
     right: -2px;
   }
+
   75% {
     top: 0;
     right: -5px;
   }
+
   87% {
     top: -2px;
     right: -2px;
   }
+
   100% {
     top: -5px;
     right: 0;    
@@ -349,6 +365,7 @@ div.desc {
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -357,8 +374,8 @@ div.desc {
 @media screen and (max-width: 600px) {
   .App{
   margin-left: 0;
-  margin-right: 0
-
+  margin-right: 0;
+  font-weight: 300;
   }
 
   .removeBtn{
@@ -392,6 +409,11 @@ div.desc {
   }
 
   .addDiv{
+    margin-left: 10%;
+    margin-bottom: 30px;
+  }
+
+  .profile{
     margin-left: 10%;
   }
 }
