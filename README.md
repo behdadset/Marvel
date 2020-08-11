@@ -23,4 +23,4 @@ I faced some challenges during the project which I can say Reac hook and also Ma
 - Adding footer
 - Adding total priice
 
-![Marvel shop](public/ScreenShot.png)
+![Marvel shop](public/screenShot.png)
