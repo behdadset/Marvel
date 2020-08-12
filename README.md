@@ -6,7 +6,7 @@ Project link: [Marvel Shop](https://marvel-shop-6676f.web.app/)
 - Javascript/HTML/CSS
 - React JS
 - FireBase - Authentication Database Hosting
-- Marvel API https://www.artists.bandsintown.com/support/api-installation
+- Marvel API https://developer.marvel.com/
 - Marvel Package for API authentication
 - Bootstrap
 
@@ -17,6 +17,7 @@ I used React JS to create the frontend and Firebase for the backend part. In the
 The app is handeling sign in, sign up and quantity inputs so I can say there is less or no chance for any input errors. ALso, you can visit the site and see the product as a guest, but you are not able to buy see my card page.
 
 I faced some challenges during the project which I can say Reac hook and also Marvel API, which is using a timestamp, API key, and hash(a combination of the private key, private key and timestamp), then I used Marvel package to make it.
+
 
 ## To do:
 - Fixing some small bugs
