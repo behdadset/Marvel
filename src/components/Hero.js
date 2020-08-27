@@ -25,7 +25,7 @@ function Hero(props) {
         })
     }, [props.userId])
 
-    const addToCard = () =>{
+    const addToCart = () =>{
         if (count > hero.events.available){ //Validating quantity input and put it in database
             setVisibleErr(true)
         }else if(count < 1 ){
@@ -90,7 +90,7 @@ function Hero(props) {
                     <h5 className="priceTag">Price: <b>${hero.events.available}</b></h5>
                 }
                 {hero &&
-                    <Alert className="notification" isOpen={visibile} toggle={closeNotification}>{count} {hero.name} added to card</Alert>
+                    <Alert className="notification" isOpen={visibile} toggle={closeNotification}>{count} {hero.name} added to cart</Alert>
                 }
                 {hero &&
                     <Alert className="notification" isOpen={visibileErr} toggle={closeNotification}>You can't add more than {hero.events.available}</Alert>
@@ -107,7 +107,7 @@ function Hero(props) {
                             <input id="count" onChange={(e)=>setCount(e.target.value)} className="form-control" type="number" value={count} min="1" max={hero.events.available} />
                         }
                         {fire.auth().W &&
-                            <button onClick={addToCard} className="btn btn-info btn-lg btn-block btn-huge">Add to card</button> 
+                            <button onClick={addToCart} className="btn btn-info btn-lg btn-block btn-huge">Add to cart</button> 
                         }
                     </div>
                 </div>

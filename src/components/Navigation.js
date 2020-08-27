@@ -43,7 +43,7 @@ export default class Navigation extends React.Component {
                                     <Nav className="mr-auto">
                                         <Nav.Link href="/">Home</Nav.Link>
                                         {fire.auth().W &&
-                                            <Nav.Link href="/card">Card</Nav.Link>
+                                            <Nav.Link href="/card">My cart</Nav.Link>
                                         }
                                         {this.state.userId === ""
                                         ?<Nav.Link className="loginBnt" href="/login">Login</Nav.Link>

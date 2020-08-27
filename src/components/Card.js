@@ -119,8 +119,8 @@ export default function Card(props) {
             </div>
             <div className="cardList col-md-4">
             <br/><br/><br/>
-                {shopList && <p>You have {list.length} hero(s) in your card.</p>}
-                {!shopList && <p>Wait a few seconds to load you shop list or you havn not added any hero in your card.</p>}
+                {shopList && <p>You have {list.length} hero(s) in your cart.</p>}
+                {!shopList && <p>Wait a few seconds to load you shop list or you havn not added any hero in your cart.</p>}
                 {shopList &&
                     <button onClick={remove} className="cardBtn btn btn-danger">Remove All</button>
                 }<br/><br/><br/>
